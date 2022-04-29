@@ -1,0 +1,50 @@
+express:
+======
+	1) npm install express
+	
+	2) npm install body-parser (if post method)
+	
+	3) npm install nodemon --save-dev   
+		or
+	npm install nodemon --global     -----------> auto restart 
+
+
+	4) package.json
+		-->npm install
+		--> npm init
+
+	terminal: > node filename.js -----------> no need to give every time
+	
+	package.json file
+	=============
+	  "scripts": {
+	    "test": "echo \"Error: no test specified\" && exit 1",
+	    "start": "nodemon pgm3.js"------------------------- > must add this line
+	  },
+	terminal: npm start ------> enough
+
+	if post method:
+	=============
+
+var express=require('express')
+var app=express()
+
+const bodyParser = require("body-parser")
+app.use(bodyParser.urlencoded({
+    extended:true
+}));
+
+app.post('/myfile',function(req,res){
+//res.send("Gener Selected is:"+req.query["gen"])
+res.send("Gener Selected is:"+req.body.gen)
+res.end()
+})
+
+var server=app.listen(8000,function(){
+var port=server.address().port
+console.log("%s port is listing",port)
+    
+})
+
+
+				
