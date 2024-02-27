@@ -1,0 +1,42 @@
+body-parser:
+============
+	hiding form input values in Address bar.
+
+use: 
+	it is high security .(do not show password or any form input value in URL)
+
+
+installation:
+=============
+	d:/projectfolder>npm install body-parser
+
+module import:
+==============
+	var bp=require("body-parser")
+
+declaration:
+============
+
+	var urlencodeparser=bp.urlencoded({extended:false})
+
+how to use function in post method(body parser)?
+================================================
+note: apply 3 parameters or arguments
+1.userdefined functionname 
+2.urlencodeparser
+3.arrow function
+
+app.post("/funname",urlencodeparser,(req,res)=>{
+
+	var data1=req.body.t1
+	var data2=req.body.t2
+	//output in browser
+	res.send("browser print"+data1...)	
+}).listen(portno)
+
+note:
+here t1,t2 -->html form input names
+
+ 
+	
+	
