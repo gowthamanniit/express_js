@@ -1,0 +1,62 @@
+
+Express JS:
+===========
+
+	def: Runtime or Dynamic backend Environment.
+
+
+	meaning:To get value from enduser.
+
+
+	application: html / react js (form inputs)
+
+	
+	installation:
+
+	d:/project folder>npm install express
+
+	
+	two methods:
+	1) get method (default)
+	use: it will show all the form input values in URL
+	2) post method
+	use: it won't show all the form input values in URL
+	(high security - must know about body-parser)
+	
+
+	1) get metod sample html
+
+	<html>
+	...
+	<body>
+	<form method="get" 	action="http://127.0.0.1:portnumber/funname">
+	
+	....input type....
+
+	<input type="submit" value="clickme">
+	</form>
+	</body>
+	</html>
+
+	2) express file .js format
+
+	var exp=require("express")
+	var app=new exp()
+	app.get("/funname",(req,res)=>{
+
+
+	}).listen(port number)
+
+	console.log(".....port listening ..")
+
+	run: node expressfile.js in terminal
+
+	
+	html file -->right click-->copy path
+	paste into browser:
+
+
+	
+
+
+	

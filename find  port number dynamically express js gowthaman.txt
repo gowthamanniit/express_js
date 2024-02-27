@@ -1,0 +1,18 @@
+Dynamically find port number:
+=============================
+
+var exp=require("express")
+var app=new exp()
+app.get("/funname",(req,res)=>{
+.............
+})
+var server=app.listen(typeportnumber,()=>{
+var portno=server.address().port
+console.log("port listening at ...",portno)
+}
+or static port number
+=====================
+app.get("/funnname",(req,res)=>{
+.....
+}).listen(portnumber)
+console.log("port listening at portnumber")
