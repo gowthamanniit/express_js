@@ -36,7 +36,7 @@ app.post("/funname",urlencodeparser,(req,res)=>{
 
 note:
 here t1,t2 -->html form input names
-don't forget to add method="post" in form attributes in html file
+don't forget to add method="post" form attributes in html file
  
 	
 	
