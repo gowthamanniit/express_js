@@ -61,4 +61,19 @@ app.get("/page/:from-:to",(req,res)=>{
 output: {"from":"1","to":"20"}
 here: from to user defined
 
-6) next usage 
+6) next usage :
+===============
+
+ex: http://localhost:3499/about
+app.get("/about",(req,res,next)=>{
+  console.log("about 1st")
+   next()
+},
+(req,res)=>{
+  console.log("about second")
+  res.send("some text browser print")
+}
+)
+
+
+
