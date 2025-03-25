@@ -1,0 +1,64 @@
+1) default router: /
+=====================
+app.get("/",(req,res)=>{
+res.send("....")
+}).portnumber
+
+browser:
+http://localhost:yourport
+
+2) named router : /about
+========================
+
+app.get("/about",(req,res)=>{
+res.send(".....")
+}
+
+3) name with extension(direct use . ): / about.html
+======================================
+app.get("/about.html",(req,res)=>{
+  res.send(".....")
+  res.sendFile("about.html")
+  or
+  res.render("about.html")
+}
+
+4) regular expression route:     /ab?cd     (meaning: (b)? optional )
+
+app.get("/ab?cd",(req,res)=>{
+
+}
+
+browser: http://localhost: abcd
+         http://localhost: acd (meaning: b optional  because ?)
+
+         try : +       1 OR MORE
+               *       0 OR MORE
+               ()?     GROUP OPTIONAL   EX:a(bc)?d       // bc optional   
+               /a/     anywhere place a    ex: http://localhost:3000/abcd
+5) route parametes (dynamic id value)  
+======================================
+
+ex: http://localhost:3499/books/123
+
+app.get("/books/:id",(req,res)=>{
+console.log(req.params)
+}
+output: {id:123}
+
+ex: http://localhost:3499/books/123/page/4
+
+app.get("/books/:id/page/:pageno",(req,res)=>{
+console.log(req.params)
+}
+output: {id:123,pageno:4}
+
+ex:http://localhost:3499/page/1-20
+                                                  (from hypen must:to)
+app.get("/page/:from-:to",(req,res)=>{
+
+}
+output: {"from":"1","to":"20"}
+here: from to user defined
+
+6) next usage 
