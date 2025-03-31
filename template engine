@@ -1,6 +1,11 @@
 How to use Template Engines in Express JS ?
 
-Express.js is a popular web framework for Node.js that simplifies the process of building web applications. One of the key features of Express is its ability to integrate with template engines, allowing developers to dynamically generate HTML pages with data from their server.
+Express.js is a popular web framework for Node.js 
+that simplifies the process of building web applications. 
+One of the key features of Express is its ability to integrate 
+with template engines, 
+allowing developers to dynamically generate HTML pages 
+with data from their server.
 
 Prerequisites:
 NodeJS and NPM
@@ -13,7 +18,8 @@ npm install ejs
 
 Step 2: Set Up Express App:
 
-Create a new file named `app.js` and set up a basic Express application. Require the Express module and create an instance of the Express application.
+Create a new file named `app.js` and set up a basic Express application. 
+Require the Express module and create an instance of the Express application.
 
 const express = require('express');
 const app = express();
@@ -21,24 +27,31 @@ const PORT = 3000;
 
 Step 3: Configure Express to Use EJS:
 
-Configure Express to use EJS as the template engine. This involves setting the `view engine` to `'ejs'` and specifying the directory where your views (EJS templates) will be located.
+Configure Express to use EJS as the template engine. 
+This involves setting the `view engine` to `'ejs'` 
+and specifying the directory where your views (EJS templates) will be located.
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 Step 4: Create a Simple EJS Template:
-Create a directory named `views` in your project root directory. Inside the `views` directory, create a new file named `index.ejs` and write a simple EJS template.
+Create a directory named `views` in your project root directory. 
+Inside the `views` directory, 
+create a new file named `index.ejs` and write a simple EJS template.
 
 Step 5: Set Up a Route to Render the EJS Template:
 
-Define a route in Express to render the EJS template we created earlier. This route will respond to HTTP GET requests to the root URL (`/`) and render the `index.ejs` template.
+Define a route in Express to render the EJS template we created earlier. 
+This route will respond to HTTP GET requests to the 
+root URL (`/`) and render the `index.ejs` template.
 
 app.get('/', (req, res) => {
     res.render('index');
 });
 Step 6: Start the Express Server:
 
-Finally, start the Express server and listen on a port of your choice (e.g., port 3000).
+Finally, start the Express server and listen on a port of your choice 
+(e.g., port 3000).
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
@@ -78,3 +91,25 @@ app.listen(PORT, () => {
 Step 7: Run Your Express Application
 
 node app.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
