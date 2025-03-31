@@ -23,3 +23,9 @@ pm2 start src/otherfile.html
 >pm2 monit
 >pm2 delete all
 
+
+note: 
+suppose  pm2 is disabled on your system
+type this command
+>Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+
