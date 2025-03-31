@@ -1,0 +1,25 @@
+process manager is a tool, which provides an ability to control application lifecycle, monitor the running services and facilitate common system admin tasks to maintain your project operability.
+
+installation:
+npm install pm2 -g
+npm install -g bun
+
+
+command:
+>pm2-dev src/index.html
+
+>pm2 start src/index.html or filename.js
+
+check browser : http://localhost:9999/index.html 
+
+>pm2 list
+
+pm2 start src/otherfile.html
+
+>pm2 restart 0 (id)
+>pm2 stop 1
+>pm2 delete 0
+>pm2 start src/index.html --name "gowtham server"
+>pm2 monit
+>pm2 delete all
+
