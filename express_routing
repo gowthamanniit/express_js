@@ -23,9 +23,9 @@ app.get("/about.html",(req,res)=>{
   res.render("about.html")
 }
 
-4) regular expression route:     /ab?cd     (meaning: (b)? optional )
+4) regular expression route:     /ab{c}d     (meaning: c optional )
 
-app.get("/ab?cd",(req,res)=>{
+app.get("/ab{c}d",(req,res)=>{
 
 }
 
