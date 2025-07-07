@@ -1,3 +1,30 @@
+var app=require("express")()
+var port=process.env.PORT || 3009
+app.use("/",(req,res,next)=>{
+    //res.write("<h1>welcome to middleware</h1>")
+    var isvalid=false
+    if(isvalid===true)
+    {
+    next()
+    }
+    else
+    {
+       // res.write("<h1>Invalid USer</h1>")
+       res.sendFile(__dirname+"/middfailure.html")
+    }
+},(req,res)=>{
+    //res.write("<h1>success</h1>")
+    //console.log(__dirname)
+    res.sendFile(__dirname+"/middsuccess.html")
+})
+//.listen(port)
+//console.log("port listening !! 3009")
+app.listen(port,()=>{
+    console.log(`port listing at ${port}...`)
+})
+
+//note: don't use res.write when using res.sendFile
+================================================================
 var  app=require("express")()
 var port=1111
 app.use((req,res,next)=>{
