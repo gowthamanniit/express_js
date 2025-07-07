@@ -1,0 +1,26 @@
+var  app=require("express")()
+var port=1111
+app.use((req,res,next)=>{
+    console.log("always check app.use")
+    next()
+})
+app.get("/fun1",(req,res)=>{
+    //res.json("welcome to express")
+    res.write("welcome to express insert fun")
+    res.end()
+})
+app.get("/fun2",(req,res)=>{
+    //res.json("welcome to express")
+    res.write("welcome to express del fun")
+    res.end()
+})
+app.get("/book/:id",(req,res)=>{
+    //res.json("welcome to express")
+    res.write("welcome to dynamic id ")
+    res.write(req.params.id)
+    res.end()
+})
+
+app.listen(port,()=>{
+    console.log(`port listening ... at ${port}`)
+})
