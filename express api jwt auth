@@ -1,0 +1,166 @@
+react js jwt token authentication using web api
+===============================================
+npm install nodemon express mongoose morgan cors jsonwebtoken bcryptjs --save
+
+package.json:
+	scripts: start :nodemon index.js
+
+index.js (step1)
+
+	const express=require("express")
+	const app=express()
+	
+	app.use("/",(req,res)=>{
+	res.send("hiii")
+	};
+
+	app.listen(5000,()=>{
+	console.log("port listening...........5000")
+	})
+index.js (step2)
+
+	const express=require("express")
+	const app=express()	
+	const mongoose=require("mongoose")
+	
+	app.use("/",(req,res)=>{
+	res.send("hiii")
+	};
+
+	app.listen(5000,()=>{
+	console.log("port listening...........5000")
+	})
+
+	mongoose.connect("mongodb://127.0.0.1:27017/userAuth',
+	{useNewUrlParser:true,useUnifiedTopoloy:true},
+	()=>{
+	console.log("db connected success")
+	}
+	)	
+userRouter.js (1)
+==============
+	const router=require("express").Router();
+	router.get("/register",(req,res)=>{
+		res.send("hi i am from register")
+	})	
+	module.exports = router
+index.js (step3)
+================
+	const express=require("express")
+	const app=express()	
+	const mongoose=require("mongoose")
+	const userRouter=requrie("./userRouter")
+	app.use(express.json())   // body parser middleware
+	
+	
+	//app.use("/",(req,res)=>{
+	//tes.send("hiii")
+	//};
+
+	app.use('/api',userRouter)
+
+	app.listen(5000,()=>{
+	console.log("port listening...........5000")
+	})
+
+	mongoose.connect("mongodb://127.0.0.1:27017/userAuth',
+	{useNewUrlParser:true,useUnifiedTopoloy:true},
+	()=>{
+	console.log("db connected success")
+	}
+	)	
+run:
+	http://localhost:5000/api/register
+	hi i am from register
+userSchema.js
+=============
+	const mongoose=require("mongoose")
+	const UserSchema=mongoose.schema({
+		name:{
+			type:string,
+			required:true,
+			lowercase:true
+		     },
+		email:{
+			type:string,
+			required:true					
+		      },
+		password:{
+			type:string,
+			required:true
+			}
+	})
+	module.exports = mongoose.model("User",UserSchema)
+userRouter.js(2)
+==============
+	const router=require("express").Router();
+	const User= require("./userSchema")
+	const bcrypt= require("bcryptjs")
+	
+
+	router.post("/register",(req,res)=>{
+		//res.send("hi i am from register")
+		const user=new User({
+		name=req.body.name,
+		email=req.body.email,
+		password=req.body.password
+		});
+   		//res.json(req.body);
+   		res.json(user);
+	})	
+	module.exports = router
+
+
+open postman:(API check)
+========================
+	choose post method:
+	api : http://localhost:5000/api/register
+	body: select raw type
+	      text: select JSON(application/json)
+
+		{
+		"name":"gowtham",
+		"email":"gowtham@niit-karur.com",
+		"password":"pass@123"				
+		}
+	send button press
+userRouter.js(3 password encrypt)
+==============
+	const router=require("express").Router();
+	const User= require("./userSchema")
+	const bcrypt= require("bcryptjs")
+	
+
+	router.post("/register",async (req,res)=>{
+
+		try
+		{
+		var emailExist=await User.findOne({email:req.body.email});
+		if(emailExist)
+		{
+		return res.status(400).json("Email already Exist");
+		}
+		var hash=await bcrypt.hash(req.body.password,10)  //encrypt password
+		const user=new User({
+		name=req.body.name,
+		email=req.body.email,
+		password=hash
+		});
+		var data=await user.save();
+		res.json(data);
+		}
+		catch(err){
+		res.status(400).json(err)
+		}
+   		res.json(user);
+	})	
+	module.exports = router
+
+check with postman:
+====================
+	post: http://localhost:5000/api/register   send
+	see :id, hashpassword...in preety
+
+	check mongodb compass  db and collection
+
+	
